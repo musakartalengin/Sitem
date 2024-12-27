@@ -8,7 +8,7 @@ export default function Header() {
     <>
       <div className="bg-white dark:bg-gray-900 text-center py-8 border-b dark:border-gray-800">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">Musa Kartal Engin</h1>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">Elektrik Elektronik Mühendisi & Web Geliştirici</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">Elektrik Elektronik Mühendisi</p>
         <div className="flex justify-center gap-6 mb-4">
           <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
             GitHub
