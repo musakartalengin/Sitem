@@ -10,6 +10,13 @@ interface PageProps {
   };
 }
 
+interface CodeProps {
+  node?: any
+  inline?: boolean
+  className?: string
+  children?: React.ReactNode
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getPostBySlug(params.slug)
   
@@ -102,18 +109,11 @@ export default async function BlogPost({ params }: PageProps) {
             remarkPlugins={[remarkGfm]}
             className="prose-lg max-w-none prose-a:text-indigo-600 hover:prose-a:text-indigo-500"
             components={{
-              code({ node, inline, className, children, ...props }) {
+              code: ({ node, inline, className, children, ...props }: CodeProps) => {
                 return (
                   <code className={`${className} bg-gray-50 rounded px-1.5 py-0.5 text-sm`} {...props}>
                     {children}
                   </code>
-                )
-              },
-              pre({ node, children, ...props }) {
-                return (
-                  <pre className="bg-gray-50 rounded-xl p-4 overflow-x-auto" {...props}>
-                    {children}
-                  </pre>
                 )
               }
             }}
