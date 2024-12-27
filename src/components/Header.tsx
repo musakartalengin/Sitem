@@ -10,14 +10,11 @@ export default function Header() {
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">Musa Kartal Engin</h1>
         <p className="text-gray-600 dark:text-gray-300 mb-4">Elektrik Elektronik Mühendisi</p>
         <div className="flex justify-center gap-6 mb-4">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
+          <a href="https://github.com/musakartalengin" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
             GitHub
           </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
+          <a href="https://linkedin.com/in/musa-kartal-engin-34b64b189/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
             LinkedIn
-          </a>
-          <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white">
-            Twitter
           </a>
         </div>
       </div>

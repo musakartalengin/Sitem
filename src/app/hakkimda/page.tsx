@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="bg-white rounded-lg shadow-md p-8">
           <div className="prose prose-lg max-w-none">
             <p className="mb-6">
-              Merhaba! Ben Musa Kartal Engin, bir Elektrik Elektronik Mühendisi ve web geliştiricisiyim. 
+              Merhaba! Ben Musa Kartal Engin, bir Elektrik Elektronik Mühendisiyim. 
               Modern web teknolojileri üzerine çalışıyor, mühendislik ve yazılım alanındaki deneyimlerimi 
               bir araya getiriyorum. Bu blog, teknik deneyimlerimi ve öğrendiklerimi paylaşmak için 
               oluşturduğum bir platform.
@@ -32,14 +32,11 @@ export default function AboutPage() {
               aşağıdaki sosyal medya hesaplarımdan bana ulaşabilirsiniz:
             </p>
             <div className="flex gap-4">
-              <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" 
+              <a href="https://github.com/musakartalengin" target="_blank" rel="noopener noreferrer" 
                  className="text-blue-600 hover:text-blue-800">GitHub</a>
               <span className="text-gray-300">•</span>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
+              <a href="https://linkedin.com/in/musa-kartal-engin-34b64b189/" target="_blank" rel="noopener noreferrer"
                  className="text-blue-600 hover:text-blue-800">LinkedIn</a>
-              <span className="text-gray-300">•</span>
-              <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
-                 className="text-blue-600 hover:text-blue-800">Twitter</a>
             </div>
           </div>
         </div>
