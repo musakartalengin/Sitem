@@ -1,22 +1,4 @@
-export interface BlogPost {
-  slug: string
-  title: string
-  excerpt: string
-  date: string
-  readTime: string
-  category: string
-  content: string
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    slug: 'risc-v-giris-ve-tarihi',
-    title: 'RISC-V Mimarisi: Tarihçesi ve Uygulama Örnekleriyle Giriş',
-    excerpt: 'RISC-V açık kaynak işlemci mimarisinin tarihçesi, temel özellikleri ve örnek kodlarla adım adım giriş rehberi...',
-    date: '5 Mart 2024',
-    readTime: '12 dk',
-    category: 'Bilgisayar Mimarisi',
-    content: `# RISC-V Mimarisi: Tarihçesi ve Uygulama Örnekleriyle Giriş
+# RISC-V Mimarisi: Tarihçesi ve Uygulama Örnekleriyle Giriş
 
 RISC-V (Risk Five olarak telaffuz edilir), açık kaynak bir işlemci talimat seti mimarisidir (ISA). Bu yazımızda RISC-V'nin tarihçesini, temel özelliklerini ve basit örneklerle nasıl kodlama yapılacağını adım adım öğreneceğiz.
 
@@ -70,7 +52,7 @@ RISC-V'nin en büyük avantajlarından biri tamamen açık kaynak olması ve kul
 
 RISC-V mimarisi, 32 adet genel amaçlı kayıt (x0-x31) kullanır. Bunların bazıları özel amaçlar için ayrılmıştır:
 
-\`\`\`
+```
 x0  (zero): Her zaman 0 değerini içerir
 x1  (ra):   Return Address - Dönüş adresi
 x2  (sp):   Stack Pointer - Yığın işaretçisi
@@ -81,18 +63,18 @@ x8-x9 (s0-s1): Kaydedilen değerler (s0 aynı zamanda fp - frame pointer)
 x10-x17 (a0-a7): Fonksiyon argümanları/dönüş değerleri
 x18-x27 (s2-s11): Kaydedilen değerler
 x28-x31 (t3-t6): Geçici değerler
-\`\`\`
+```
 
 ### İlk RISC-V Assembly Programı
 
 İşte basit bir "Merhaba Dünya" programı:
 
-\`\`\`assembly
+```assembly
 # merhaba.s - Basit bir RISC-V assembly programı
 
 .section .data
 mesaj:
-    .string "Merhaba, RISC-V Dünyası!\\n"
+    .string "Merhaba, RISC-V Dünyası!\n"
 
 .section .text
 .global _start
@@ -108,63 +90,63 @@ _start:
     li a7, 93           # exit syscall numarası
     li a0, 0            # dönüş kodu
     ecall               # sistem çağrısı yapılır
-\`\`\`
+```
 
 Bu programın adım adım açıklaması:
 
-1. \`.section .data\`: Veri bölümünü tanımlar
-2. \`mesaj\` etiketiyle bir metin tanımlanır
-3. \`.section .text\`: Kod bölümünü tanımlar
-4. \`_start\`: Programın başlangıç noktasını belirtir
+1. `.section .data`: Veri bölümünü tanımlar
+2. `mesaj` etiketiyle bir metin tanımlanır
+3. `.section .text`: Kod bölümünü tanımlar
+4. `_start`: Programın başlangıç noktasını belirtir
 5. Sistem çağrıları (syscall) ile ekrana yazı yazdırır ve programı sonlandırır
 
 ### Programı Derleme ve Çalıştırma
 
-\`\`\`bash
+```bash
 # RISC-V GCC derleyicisi ile derleme
 riscv64-unknown-elf-gcc -nostdlib -o merhaba merhaba.s
 
 # QEMU emülatörü ile çalıştırma
 qemu-riscv64 merhaba
-\`\`\`
+```
 
 ## 4. C Dilinde RISC-V Programlama
 
 RISC-V için C programları yazmak daha kolaydır ve assembly'den daha portabl (taşınabilir) kodlar yazmanızı sağlar.
 
-\`\`\`c
+```c
 // merhaba.c - RISC-V için C programı
 
 #include <stdio.h>
 
 int main() {
-    printf("Merhaba, RISC-V Dünyası!\\n");
+    printf("Merhaba, RISC-V Dünyası!\n");
     
     // Basit bir hesaplama
     int a = 5, b = 10;
     int sonuc = a + b;
     
-    printf("%d + %d = %d\\n", a, b, sonuc);
+    printf("%d + %d = %d\n", a, b, sonuc);
     
     return 0;
 }
-\`\`\`
+```
 
 Derleme ve çalıştırma:
 
-\`\`\`bash
+```bash
 # RISC-V için C derlemesi
 riscv64-unknown-elf-gcc -o merhaba_c merhaba.c
 
 # Çalıştırma (emülatör ile)
 qemu-riscv64 merhaba_c
-\`\`\`
+```
 
 ## 5. RISC-V Programlama: Temel Komutlar ve Örnekleri
 
 ### Aritmetik İşlemler
 
-\`\`\`assembly
+```assembly
 # Toplama işlemi
 add  t0, t1, t2    # t0 = t1 + t2
 
@@ -173,11 +155,11 @@ sub  t0, t1, t2    # t0 = t1 - t2
 
 # Sabit değerle toplama
 addi t0, t1, 10    # t0 = t1 + 10
-\`\`\`
+```
 
 ### Mantıksal İşlemler
 
-\`\`\`assembly
+```assembly
 # VE (AND) işlemi
 and  t0, t1, t2    # t0 = t1 & t2
 
@@ -189,11 +171,11 @@ xor  t0, t1, t2    # t0 = t1 ^ t2
 
 # Sabit değerle AND işlemi
 andi t0, t1, 15    # t0 = t1 & 15
-\`\`\`
+```
 
 ### Bellek İşlemleri
 
-\`\`\`assembly
+```assembly
 # Kelime yükleme (4 byte)
 lw   t0, 0(t1)     # t0 = Memory[t1 + 0]
 
@@ -205,11 +187,11 @@ lb   t0, 0(t1)     # t0 = SignExtend(Memory[t1 + 0])
 
 # Byte kaydetme
 sb   t0, 0(t1)     # Memory[t1 + 0] = t0[7:0]
-\`\`\`
+```
 
 ### Dallanma Komutları
 
-\`\`\`assembly
+```assembly
 # Eğer eşitse dallan
 beq  t0, t1, etiket  # if (t0 == t1) goto etiket
 
@@ -218,18 +200,18 @@ bne  t0, t1, etiket  # if (t0 != t1) goto etiket
 
 # Koşulsuz dallanma
 j    etiket          # goto etiket
-\`\`\`
+```
 
 ## 6. Örnek Uygulama: Fibonacci Dizisi
 
 Aşağıdaki örnek, RISC-V assembly dilinde Fibonacci dizisinin ilk 10 terimini hesaplayan bir programdır:
 
-\`\`\`assembly
+```assembly
 # fibonacci.s - Fibonacci dizisinin ilk 10 terimini hesaplar
 
 .section .data
-mesaj1: .string "Fibonacci Dizisi (ilk 10 terim):\\n"
-mesaj2: .string "Fibonacci(%d) = %d\\n"
+mesaj1: .string "Fibonacci Dizisi (ilk 10 terim):\n"
+mesaj2: .string "Fibonacci(%d) = %d\n"
 
 .section .text
 .global main
@@ -267,14 +249,14 @@ fibonacci_loop:
 exit:
     li a0, 0
     ret
-\`\`\`
+```
 
 Bu programı derlemek ve çalıştırmak için:
 
-\`\`\`bash
+```bash
 riscv64-unknown-elf-gcc -o fibonacci fibonacci.s
 qemu-riscv64 fibonacci
-\`\`\`
+```
 
 ## 7. RISC-V Donanım Geliştirme 
 
@@ -282,7 +264,7 @@ RISC-V mimarisi ile donanım geliştirmek de mümkündür. Bunun için HDL (Hard
 
 İşte basit bir RISC-V ALU (Arithmetic Logic Unit) örneği:
 
-\`\`\`verilog
+```verilog
 // Basit bir RISC-V ALU
 module riscv_alu(
     input [31:0] a,           // İlk operand
@@ -309,7 +291,7 @@ module riscv_alu(
         endcase
     end
 endmodule
-\`\`\`
+```
 
 ## 8. RISC-V Geliştirme Ortamının Kurulumu
 
@@ -317,7 +299,7 @@ RISC-V için geliştirme yapmak istiyorsanız, aşağıdaki adımları izleyebil
 
 ### Linux (Ubuntu) Ortamında Kurulum
 
-\`\`\`bash
+```bash
 # Gerekli paketleri kur
 sudo apt-get update
 sudo apt-get install autoconf automake autotools-dev curl libmpc-dev
@@ -336,7 +318,7 @@ source ~/.bashrc
 
 # QEMU RISC-V emülatörünü kur
 sudo apt-get install qemu-user-static
-\`\`\`
+```
 
 ### Windows Ortamında Kurulum
 
@@ -379,15 +361,4 @@ Bu yazımızda RISC-V'nin tarihçesini, temel özelliklerini ve uygulama örnekl
 - [RISC-V Specifications](https://riscv.org/technical/specifications/)
 - [The RISC-V Reader](http://riscvbook.com/)
 - [RISC-V Assembly Programmer's Manual](https://github.com/riscv/riscv-asm-manual/blob/master/riscv-asm.md)
-- [SiFive Developer Resources](https://www.sifive.com/resources)
-`
-  }
-];
-
-export function getAllPosts(): BlogPost[] {
-  return blogPosts;
-}
-
-export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
-  return blogPosts.find(post => post.slug === slug);
-}
+- [SiFive Developer Resources](https://www.sifive.com/resources) 
