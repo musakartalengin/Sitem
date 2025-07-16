@@ -11,6 +11,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Next.js blog sayfaları için yönlendirme
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat/index.html"
+  status = 200
+
+# Ana yönlendirme
 [[redirects]]
   from = "/*"
   to = "/index.html"

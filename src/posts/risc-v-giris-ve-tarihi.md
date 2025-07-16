@@ -1,3 +1,11 @@
+---
+title: 'RISC-V Mimarisi: Tarihçesi ve Uygulama Örnekleriyle Giriş'
+excerpt: 'RISC-V açık kaynak işlemci mimarisinin tarihçesi, temel özellikleri ve örnek kodlarla adım adım giriş rehberi...'
+date: '2024-03-05'
+readTime: '12 dk'
+category: 'Bilgisayar Mimarisi'
+---
+
 # RISC-V Mimarisi: Tarihçesi ve Uygulama Örnekleriyle Giriş
 
 RISC-V (Risk Five olarak telaffuz edilir), açık kaynak bir işlemci talimat seti mimarisidir (ISA). Bu yazımızda RISC-V'nin tarihçesini, temel özelliklerini ve basit örneklerle nasıl kodlama yapılacağını adım adım öğreneceğiz.
