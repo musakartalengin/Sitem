@@ -12,7 +12,7 @@ export default function NewsletterForm() {
     setStatus('loading')
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/.netlify/functions/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
