@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: email,
+        email_address: email,
         notes: 'Blog abone olma formu üzerinden kaydoldu'
       }),
     })
