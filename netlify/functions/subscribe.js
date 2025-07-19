@@ -24,6 +24,9 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    console.log('Function called with body:', event.body)
+    console.log('API Key exists:', !!process.env.BUTTONDOWN_API_KEY)
+    
     const { email } = JSON.parse(event.body)
     
     if (!email || !email.includes('@')) {
