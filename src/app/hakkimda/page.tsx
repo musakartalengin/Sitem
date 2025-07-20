@@ -23,10 +23,10 @@ export default function AboutPage() {
             
             <h2>Hakkımda</h2>
             <p>
-              Merhaba, ben Musa. Yaklaşık 3 yıldır sayısal tasarım ve FPGA alanında çalışan bir mühendisim. Teknolojinin temelini oluşturan donanım dünyasında, fikirleri yüksek performanslı sistemlere dönüştürme tutkusuyla çalışıyorum.
+              Merhaba, ben Musa Kartal Engin. Elektrik‑Elektronik Mühendisiyim ve son birkaç yıldır FPGA, sayısal tasarım ve çip tasarımı konularında çalışıyorum. Üniversite yıllarımda başlayan merakımı — Verilog‑RTL kodlamadan Vivado simülasyonlarına, ASIC akışlarından doğrulama süreçlerine kadar — sahada test ederek geliştiriyorum.
             </p>
             <p>
-              Karmaşık sorunlara donanım seviyesinde verimli çözümler bulmak ve bu süreci VHDL/Verilog gibi dillerle yönetmek en keyif aldığım kısım.
+              Bugüne kadar Yongatek'te uzun dönem stajyer mühendis olarak algoritmalar geliştirdim, kayan nokta işlemcileri için IP çekirdekleri tasarladım ve UART‑I2C‑SPI gibi arabirimleri RTL düzeyinde hayata geçirdim. TÜBİTAK projeleri, Teknofest derecesi ve gemi elektrik atölyesindeki tecrübelerim, tasarımın yalnızca laboratuvarda değil gerçek dünyada da çalışması gerektiğini öğretti.
             </p>
             
             <h3 className="mt-8">Temel Yetkinliklerim</h3>
@@ -39,7 +39,15 @@ export default function AboutPage() {
 
             <h3>Neden Bu Blog?</h3>
             <p>
-              Bu blog, sayısal tasarım ve bilgisayar mimarisi alanındaki yolculuğumu belgelediğim, öğrendiklerimi ve pratik tecrübelerimi paylaştığım kişisel bir platform. Amacım, benimle aynı alana ilgi duyan insanlarla bilgi alışverişinde bulunmak.
+              Bu blogda "sahada işe yarayan hap bilgiler" paylaşmak istiyorum. Türkçe kaynak bulmakta zorlananlar için:
+            </p>
+            <ul>
+              <li>Kısa, öz ama derinlemesine FPGA ve ASIC notları</li>
+              <li>Vivado, ModelSim, UVM gibi araçlarda pratik ipuçları</li>
+              <li>Projelerden çıkarılan dersler ve kariyer önerileri</li>
+            </ul>
+            <p>
+              Amacım; öğrendiklerimi basit, abartısız bir dille aktarıp birlikte büyümek. Eğer sen de donanım tasarımıyla ilgileniyor ve "ne öğrenmeliyim?" sorusuna cevap arıyorsan, doğru yerdesin. Yorumlarını bekliyorum!
             </p>
 
             <div className="mt-12 text-center">
