@@ -41,15 +41,26 @@ function getPostData(fileName: string): BlogPost {
 
 
 export function getAllPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory)
-  const allPosts = fileNames.map(fileName => {
-    return getPostData(fileName)
-  })
+  try {
+    const fileNames = fs.readdirSync(postsDirectory)
+    const markdownFiles = fileNames.filter(fileName => fileName.endsWith('.md'))
+    
+    if (markdownFiles.length === 0) {
+      return []
+    }
+    
+    const allPosts = markdownFiles.map(fileName => {
+      return getPostData(fileName)
+    })
 
-  // Yazıları tarihe göre en yeniden eskiye sırala
-  return allPosts.sort((post1, post2) => {
-    return new Date(post2.date) > new Date(post1.date) ? 1 : -1
-  });
+    // Yazıları tarihe göre en yeniden eskiye sırala
+    return allPosts.sort((post1, post2) => {
+      return new Date(post2.date) > new Date(post1.date) ? 1 : -1
+    });
+  } catch (error) {
+    console.error('Posts okunamadı:', error)
+    return []
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
