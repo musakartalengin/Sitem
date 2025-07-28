@@ -6,11 +6,7 @@ readTime: '15 dk'
 category: 'Sayısal Tasarım'
 ---
 
-# Tam Sayılar için Karekök Hesaplama İşleminin SystemVerilog ile Gerçeklenmesi
-
-**Musa Kartal Engin** | 8 Ocak 2025 | Tam Sayılar için Karekök Hesaplama İşleminin SystemVerilog ile Gerçeklenmesi
-
-## Karekök Algoritması
+# Karekök Algoritması
 
 Bitwise karekök algoritması, pozitif bir tam sayının karekökünü donanımsal olarak hızlı ve basit bir şekilde hesaplamak için kullanılan yöntemlerden biridir. Bu algoritma, divide and conquer yaklaşımıyla çalışır ve sonucu bit bit oluşturur. Bu projede modern SystemVerilog syntax'ı kullanılarak geliştirilmiş, endüstri standartlarına uygun bir implementasyon sunulmaktadır. SystemVerilog'un gelişmiş özellikleri sayesinde daha okunabilir ve maintainability açısından üstün bir tasarım elde edilmiştir.
 
