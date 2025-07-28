@@ -11,11 +11,15 @@ export default function CopyButton({ language }: CopyButtonProps) {
       // Tüm kod satırlarını al
       const codeLines = Array.from(codeElement.querySelectorAll('code'))
       
-      if (codeLines.length > 0) {
-        // Her satırın içeriğini al ve birleştir
-        const codeText = codeLines.map(line => line.textContent || '').join('\n')
-        navigator.clipboard.writeText(codeText)
-      } else {
+             if (codeLines.length > 0) {
+         // Her satırın içeriğini al, line number'ları temizle ve birleştir
+         const codeText = codeLines.map(line => {
+           const text = line.textContent || ''
+           // Line number'ları temizle ama indentation'ı koru
+           return text.replace(/^\s*\d+\s*/, '')
+         }).join('\n')
+         navigator.clipboard.writeText(codeText)
+       } else {
         // Fallback: textContent kullan ama line number'ları temizle
         const text = codeElement.textContent || ''
         const cleanedText = text
