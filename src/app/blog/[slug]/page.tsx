@@ -47,44 +47,49 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </header>
 
                      {/* Content */}
-           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-p:text-left prose-p:leading-relaxed prose-li:text-gray-900 dark:prose-li:text-gray-100 prose-h2:text-gray-900 dark:prose-h2:text-white prose-h3:text-gray-900 dark:prose-h3:text-white prose-code:text-indigo-600 dark:prose-code:text-indigo-400 prose-code:bg-indigo-50 dark:prose-code:bg-indigo-900/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-table:border-collapse prose-table:w-full prose-table:my-8 prose-table:rounded-lg prose-table:overflow-hidden prose-table:shadow-lg prose-th:border prose-th:border-gray-200 dark:prose-th:border-gray-600 prose-th:bg-gradient-to-r prose-th:from-gray-50 prose-th:to-gray-100 dark:prose-th:from-gray-700 dark:prose-th:to-gray-800 prose-th:text-gray-900 dark:prose-th:text-white prose-th:px-6 prose-th:py-4 prose-th:text-left prose-th:font-bold prose-th:text-sm prose-td:border prose-td:border-gray-200 dark:prose-td:border-gray-600 prose-td:px-6 prose-td:py-4 prose-td:text-gray-900 dark:prose-td:text-gray-100 prose-td:text-sm prose-tr:bg-white dark:prose-tr:bg-gray-800 prose-tr:hover:bg-gray-50 dark:prose-tr:hover:bg-gray-700 prose-tr:transition-colors">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-                             components={{
+           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-p:text-left prose-p:leading-relaxed prose-li:text-gray-900 dark:prose-li:text-gray-100 prose-h2:text-gray-900 dark:prose-h2:text-white prose-h3:text-gray-900 dark:prose-h3:text-white prose-code:text-indigo-600 dark:prose-code:text-indigo-400 prose-code:bg-indigo-50 dark:prose-code:bg-indigo-900/30 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-table:border-collapse prose-table:w-full prose-table:my-8 prose-table:rounded-lg prose-table:overflow-hidden prose-table:shadow-lg prose-table:overflow-x-auto prose-table:min-w-full prose-th:border prose-th:border-gray-200 dark:prose-th:border-gray-600 prose-th:bg-gradient-to-r prose-th:from-gray-50 prose-th:to-gray-100 dark:prose-th:from-gray-700 dark:prose-th:to-gray-800 prose-th:text-gray-900 dark:prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-bold prose-th:text-xs prose-td:border prose-td:border-gray-200 dark:prose-td:border-gray-600 prose-td:px-4 prose-td:py-3 prose-td:text-gray-900 dark:prose-td:text-gray-100 prose-td:text-xs prose-tr:bg-white dark:prose-tr:bg-gray-800 prose-tr:hover:bg-gray-50 dark:prose-tr:hover:bg-gray-700 prose-tr:transition-colors">
+                         <ReactMarkdown
+               remarkPlugins={[remarkGfm]}
+               components={{
+                 table: ({ children }) => (
+                   <div className="overflow-x-auto">
+                     <table className="min-w-full">{children}</table>
+                   </div>
+                 ),
                  code({ className, children, ...props }) {
                    const match = /language-(\w+)/.exec(className || '')
-                                      return match ? (
+                   return match ? (
                      <div className="relative">
                        <div className="absolute top-0 right-0 p-2">
                          <CopyButton language={match[1]} />
                        </div>
-                      <SyntaxHighlighter
-                        style={tomorrow}
-                        language={match[1]}
-                        PreTag="div"
-                        className="rounded-lg"
-                        customStyle={{
-                          margin: 0,
-                          padding: '1rem',
-                          fontSize: '0.875rem',
-                          lineHeight: '1.5',
-                        }}
-                        showLineNumbers={true}
-                        data-code={match[1]}
-                      >
-                        {String(children).replace(/\n$/, '')}
-                      </SyntaxHighlighter>
-                    </div>
-                  ) : (
-                    <code className={className} {...props}>
-                      {children}
-                    </code>
-                  )
-                }
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
+                       <SyntaxHighlighter
+                         style={tomorrow}
+                         language={match[1]}
+                         PreTag="div"
+                         className="rounded-lg"
+                         customStyle={{
+                           margin: 0,
+                           padding: '1rem',
+                           fontSize: '0.875rem',
+                           lineHeight: '1.5',
+                         }}
+                         showLineNumbers={true}
+                         data-code={match[1]}
+                       >
+                         {String(children).replace(/\n$/, '')}
+                       </SyntaxHighlighter>
+                     </div>
+                   ) : (
+                     <code className={className} {...props}>
+                       {children}
+                     </code>
+                   )
+                 }
+               }}
+             >
+               {post.content}
+             </ReactMarkdown>
           </div>
         </article>
       </div>

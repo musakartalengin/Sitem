@@ -19,3 +19,14 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Ghosted text sorununu çöz */
+.prose h1:first-of-type {
+  display: none !important;
+}
+
+/* Tablo responsive düzeltmesi */
+.prose table {
+  font-size: 0.75rem;
+  min-width: max-content;
+}
