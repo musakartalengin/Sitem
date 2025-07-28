@@ -26,6 +26,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     notFound()
   }
 
+  // Kod bloğu sayacı
+  let codeBlockCounter = 0
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div className="max-w-4xl mx-auto px-4 py-12">
@@ -56,36 +59,44 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                      <table className="min-w-full">{children}</table>
                    </div>
                  ),
-                 code({ className, children, ...props }) {
-                   const match = /language-(\w+)/.exec(className || '')
-                   return match ? (
-                     <div className="relative">
-                       <div className="absolute top-0 right-0 p-2">
-                         <CopyButton language={match[1]} />
-                       </div>
-                       <SyntaxHighlighter
-                         style={tomorrow}
-                         language={match[1]}
-                         PreTag="div"
-                         className="rounded-lg"
-                         customStyle={{
-                           margin: 0,
-                           padding: '1rem',
-                           fontSize: '0.875rem',
-                           lineHeight: '1.5',
-                         }}
-                         showLineNumbers={true}
-                         data-code={match[1]}
-                       >
-                         {String(children).replace(/\n$/, '')}
-                       </SyntaxHighlighter>
-                     </div>
-                   ) : (
-                     <code className={className} {...props}>
-                       {children}
-                     </code>
-                   )
-                 }
+                                   code({ className, children, ...props }) {
+                    const match = /language-(\w+)/.exec(className || '')
+                    return match ? (
+                      <div className="relative">
+                        {(() => {
+                          codeBlockCounter++
+                          const uniqueId = `${match[1]}-${codeBlockCounter}`
+                          return (
+                            <>
+                              <div className="absolute top-0 right-0 p-2">
+                                <CopyButton language={uniqueId} />
+                              </div>
+                              <SyntaxHighlighter
+                                style={tomorrow}
+                                language={match[1]}
+                                PreTag="div"
+                                className="rounded-lg"
+                                customStyle={{
+                                  margin: 0,
+                                  padding: '1rem',
+                                  fontSize: '0.875rem',
+                                  lineHeight: '1.5',
+                                }}
+                                showLineNumbers={true}
+                                data-code={uniqueId}
+                              >
+                                {String(children).replace(/\n$/, '')}
+                              </SyntaxHighlighter>
+                            </>
+                          )
+                        })()}
+                      </div>
+                    ) : (
+                      <code className={className} {...props}>
+                        {children}
+                      </code>
+                    )
+                  }
                }}
              >
                {post.content}

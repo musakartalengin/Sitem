@@ -8,8 +8,15 @@ export default function CopyButton({ language }: CopyButtonProps) {
   const handleCopy = () => {
     const codeElement = document.querySelector(`[data-code="${language}"]`) as HTMLElement
     if (codeElement) {
-      navigator.clipboard.writeText(codeElement.textContent || '')
-      // İsteğe bağlı: Kopyalandı bildirimi eklenebilir
+      // Sadece kod içeriğini al, line number'ları hariç tut
+      const text = codeElement.textContent || ''
+      // Line number'ları ve fazla boşlukları temizle
+      const cleanedText = text
+        .replace(/^\s*\d+\s*/gm, '') // Satır başındaki sayıları ve boşlukları kaldır
+        .replace(/\n\s*\n/g, '\n') // Fazla boş satırları temizle
+        .trim() // Başındaki ve sonundaki boşlukları kaldır
+      
+      navigator.clipboard.writeText(cleanedText)
     }
   }
 

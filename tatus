@@ -1,0 +1,5 @@
+[33mf67b34f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m fix: Tablo responsive düzeltmesi ve ghosted text çözümü
+[33m34a25a0[m feat: Blog sayfası görsel iyileştirmeleri - tablo tasarımı, tipografi ve kod highlighting
+[33m6c44333[m fix: CopyButton ayrı component yapıldı - generateStaticParams ile uyumlu
+[33m854c8bc[m fix: Blog sayfası Client Component yapıldı - onClick event handler için
+[33mc406823[m fix: RSS feed async/await düzeltmesi
