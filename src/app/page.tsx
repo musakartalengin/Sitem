@@ -2,8 +2,8 @@ import { getAllPosts } from '@/lib/posts'
 import BlogList from '@/components/BlogList'
 import NewsletterForm from '@/components/NewsletterForm'
 
-export default function Home() {
-  const posts = getAllPosts()
+export default async function Home() {
+  const posts = await getAllPosts()
   const categories = posts.length > 0 
     ? ['Tümü', ...new Set(posts.map(post => post.category))]
     : ['Tümü']

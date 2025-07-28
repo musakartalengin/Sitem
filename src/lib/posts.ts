@@ -40,7 +40,7 @@ function getPostData(fileName: string): BlogPost {
 }
 
 
-export function getAllPosts(): BlogPost[] {
+export async function getAllPosts(): Promise<BlogPost[]> {
   try {
     const fileNames = fs.readdirSync(postsDirectory)
     const markdownFiles = fileNames.filter(fileName => fileName.endsWith('.md'))
