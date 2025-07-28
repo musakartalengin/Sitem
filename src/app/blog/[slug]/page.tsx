@@ -1,3 +1,5 @@
+'use client'
+
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
