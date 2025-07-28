@@ -1,11 +1,10 @@
-'use client'
-
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import CopyButton from '@/components/CopyButton'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -54,22 +53,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
                              components={{
                  code({ className, children, ...props }) {
                    const match = /language-(\w+)/.exec(className || '')
-                   return match ? (
-                    <div className="relative">
-                      <div className="absolute top-0 right-0 p-2">
-                        <button
-                          onClick={() => {
-                            const codeElement = document.querySelector(`[data-code="${match[1]}"]`) as HTMLElement
-                            if (codeElement) {
-                              navigator.clipboard.writeText(codeElement.textContent || '')
-                              // Kopyalandı bildirimi eklenebilir
-                            }
-                          }}
-                          className="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                        >
-                          Kopyala
-                        </button>
-                      </div>
+                                      return match ? (
+                     <div className="relative">
+                       <div className="absolute top-0 right-0 p-2">
+                         <CopyButton language={match[1]} />
+                       </div>
                       <SyntaxHighlighter
                         style={tomorrow}
                         language={match[1]}
