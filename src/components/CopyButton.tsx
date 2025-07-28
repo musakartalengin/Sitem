@@ -8,11 +8,11 @@ export default function CopyButton({ language }: CopyButtonProps) {
   const handleCopy = () => {
     const codeElement = document.querySelector(`[data-code="${language}"]`) as HTMLElement
     if (codeElement) {
-      // Sadece kod içeriğini al, line number'ları hariç tut
-      const text = codeElement.textContent || ''
-      // Line number'ları ve fazla boşlukları temizle
+      // Sadece kod içeriğini al, line number'ları hariç tut ama indentation'ı koru
+      const text = codeElement.innerText || codeElement.textContent || ''
+      // Line number'ları temizle ama indentation'ı koru
       const cleanedText = text
-        .replace(/^\s*\d+\s*/gm, '') // Satır başındaki sayıları ve boşlukları kaldır
+        .replace(/^\s*\d+\s*/gm, '') // Satır başındaki sayıları kaldır ama indentation'ı koru
         .replace(/\n\s*\n/g, '\n') // Fazla boş satırları temizle
         .trim() // Başındaki ve sonundaki boşlukları kaldır
       

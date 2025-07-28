@@ -1,8 +1,8 @@
 ---
 title: 'Tam Sayılar için Karekök Hesaplama İşleminin SystemVerilog ile Gerçeklenmesi'
 excerpt: 'Bitwise karekök algoritmasının modern SystemVerilog syntaxı ile endüstri standartlarına uygun implementasyonu. Vivado synthesis-ready, test edilmiş ve doğrulanmış çözüm.'
-date: '2025-01-08'
-readTime: '15 dk'
+date: '2025-07-29'
+readTime: '1 dk'
 category: 'Sayısal Tasarım'
 ---
 
