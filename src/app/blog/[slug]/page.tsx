@@ -49,10 +49,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-indigo-600 hover:prose-a:text-indigo-500 prose-p:text-gray-900 dark:prose-p:text-gray-100 prose-li:text-gray-900 dark:prose-li:text-gray-100 prose-h2:text-gray-900 dark:prose-h2:text-white prose-h3:text-gray-900 dark:prose-h3:text-white prose-table:border-collapse prose-table:w-full prose-table:my-6 prose-th:border prose-th:border-gray-300 dark:prose-th:border-gray-600 prose-th:bg-gray-50 dark:prose-th:bg-gray-700 prose-th:text-gray-900 dark:prose-th:text-white prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-semibold prose-td:border prose-td:border-gray-300 dark:prose-td:border-gray-600 prose-td:px-4 prose-td:py-3 prose-td:text-gray-900 dark:prose-td:text-gray-100 prose-tr:hover:bg-gray-50 dark:prose-tr:hover:bg-gray-700">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || '')
-                  return !inline && match ? (
+                             components={{
+                 code({ className, children, ...props }) {
+                   const match = /language-(\w+)/.exec(className || '')
+                   return match ? (
                     <div className="relative">
                       <div className="absolute top-0 right-0 p-2">
                         <button
